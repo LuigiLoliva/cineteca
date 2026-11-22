@@ -1,0 +1,26 @@
+{
+  "name": "cineteca",
+  "version": "1.0.0",
+  "description": "progetto scolastico per la cineteca",
+  "homepage": "https://github.com/LuigiLoliva/cineteca#readme",
+  "bugs": {
+    "url": "https://github.com/LuigiLoliva/cineteca/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuigiLoliva/cineteca.git"
+  },
+  "license": "ISC",
+  "author": "Luigi Loliva",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

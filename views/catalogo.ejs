@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titoloPagina %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="navigazione" aria-label="Navigazione principale">
+      <a href="/">Home</a>
+      <a href="/catalogo">Catalogo</a>
+      <a href="/aggiungi">Aggiungi film</a>
+    </nav>
+
+    <header class="page-header">
+      <h1>Catalogo dei film</h1>
+      <p><%= film.length %> <%= film.length === 1 ? 'film presente' : 'film presenti' %> nell'archivio.</p>
+    </header>
+
+    <form class="ricerca" action="/catalogo/cerca" method="get">
+      <label for="titolo">Cerca per titolo</label>
+      <div>
+        <input type="search" id="titolo" name="titolo" placeholder="Inserisci un titolo">
+        <button type="submit">Cerca</button>
+      </div>
+    </form>
+
+    <% if (film.length === 0) { %>
+      <p class="nessun-risultato">Nessun film presente nel catalogo.</p>
+    <% } else { %>
+      <section class="catalogo" aria-label="Elenco dei film">
+        <% film.forEach(opera => { %>
+          <article class="film-card">
+            <h2><a href="/film/<%= opera.id %>"><%= opera.titolo %></a></h2>
+            <dl>
+              <div>
+                <dt>Regista</dt>
+                <dd><%= opera.regista %></dd>
+              </div>
+              <div>
+                <dt>Anno</dt>
+                <dd><%= opera.anno %></dd>
+              </div>
+              <div>
+                <dt>Genere</dt>
+                <dd><%= opera.genere %></dd>
+              </div>
+              <div>
+                <dt>Durata</dt>
+                <dd><%= opera.durata %> minuti</dd>
+              </div>
+            </dl>
+          </article>
+        <% }); %>
+      </section>
+    <% } %>
+  </main>
+</body>
+</html>

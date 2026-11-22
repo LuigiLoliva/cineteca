@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titoloPagina %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main class="home">
+    <header>
+      <h1>Cineteca</h1>
+      <p>
+        Il tuo archivio cinematografico digitale: consulta il catalogo,
+        cerca un film per titolo o aggiungi una nuova opera.
+      </p>
+    </header>
+
+    <section class="contatore" aria-label="Numero di film presenti">
+      <strong><%= numeroFilm %></strong>
+      <span><%= numeroFilm === 1 ? 'film presente' : 'film presenti' %></span>
+    </section>
+
+    <nav class="azioni" aria-label="Funzionalità principali">
+      <a href="/catalogo">Consulta il catalogo</a>
+      <a href="/aggiungi">Aggiungi un film</a>
+    </nav>
+  </main>
+</body>
+</html>

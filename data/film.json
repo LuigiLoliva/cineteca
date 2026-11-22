@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "titolo": "Interstellar",
+    "regista": "Christopher Nolan",
+    "anno": 2014,
+    "genere": "Fantascienza",
+    "durata": 169,
+    "paese": "USA",
+    "casaCinematografica": "Paramount Pictures",
+    "trama": "Un gruppo di astronauti intraprende un viaggio attraverso un wormhole alla ricerca di un nuovo pianeta abitabile."
+  },
+  {
+    "id": 2,
+    "titolo": "Il Signore degli Anelli - La Compagnia dell'Anello",
+    "regista": "Peter Jackson",
+    "anno": 2001,
+    "genere": "Fantasy",
+    "durata": 178,
+    "paese": "Nuova Zelanda",
+    "casaCinematografica": "New Line Cinema",
+    "trama": "Un giovane hobbit parte con una compagnia per distruggere un anello dal potere malvagio."
+  },
+  {
+    "id": 3,
+    "titolo": "Inception",
+    "regista": "Christopher Nolan",
+    "anno": 2010,
+    "genere": "Fantascienza",
+    "durata": 148,
+    "paese": "USA",
+    "casaCinematografica": "Warner Bros.",
+    "trama": "Un ladro esperto nell'estrazione di segreti viene incaricato di impiantare un'idea nella mente di un uomo."
+  },
+  {
+    "id": 4,
+    "titolo": "La vita è bella",
+    "regista": "Roberto Benigni",
+    "anno": 1997,
+    "genere": "Commedia drammatica",
+    "durata": 116,
+    "paese": "Italia",
+    "casaCinematografica": "Cecchi Gori Group",
+    "trama": "Un padre cerca di proteggere il figlio dai orrori di un campo di concentramento trasformandolo in un gioco."
+  },
+  {
+    "id": 5,
+    "titolo": "Pulp Fiction",
+    "regista": "Quentin Tarantino",
+    "anno": 1994,
+    "genere": "Crime",
+    "durata": 154,
+    "paese": "USA",
+    "casaCinematografica": "Miramax",
+    "trama": "Le vite di criminali, mafiosi e disadattati si intrecciano in una serie di episodi violenti e ironici."
+  },
+  {
+    "id": 6,
+    "titolo": "Parasite",
+    "regista": "Bong Joon-ho",
+    "anno": 2019,
+    "genere": "Thriller",
+    "durata": 132,
+    "paese": "Corea del Sud",
+    "casaCinematografica": "Barunson E&A",
+    "trama": "Una famiglia povera ottiene diversi lavori presso una ricca famiglia, creando una serie di conseguenze impreviste."
+  }
+]

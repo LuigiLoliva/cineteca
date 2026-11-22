@@ -1,0 +1,311 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  color: #202020;
+  background: #f3f5f7;
+}
+
+.home {
+  width: min(680px, calc(100% - 32px));
+  padding: 40px;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.home h1 {
+  margin-top: 0;
+  color: #8b1e1e;
+}
+
+.contatore {
+  margin: 28px auto;
+  display: grid;
+  gap: 4px;
+}
+
+.contatore strong {
+  font-size: 48px;
+  color: #8b1e1e;
+}
+
+.azioni {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.azioni a {
+  padding: 12px 18px;
+  color: white;
+  text-decoration: none;
+  background: #8b1e1e;
+  border-radius: 6px;
+}
+
+.page {
+  width: min(1000px, calc(100% - 32px));
+  margin: 32px auto;
+}
+
+.navigazione {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.navigazione a {
+  color: #8b1e1e;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  margin-bottom: 8px;
+  color: #8b1e1e;
+}
+
+.ricerca {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+}
+
+.ricerca label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.ricerca div {
+  display: flex;
+  gap: 8px;
+}
+
+.ricerca input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+}
+
+.ricerca button {
+  padding: 10px 16px;
+  color: white;
+  background: #8b1e1e;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.film-card {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.film-card h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.film-card h2 a {
+  color: #202020;
+  text-decoration: none;
+}
+
+.film-card h2 a:hover {
+  color: #8b1e1e;
+}
+
+.film-card dl {
+  margin: 0;
+}
+
+.film-card dl div {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.film-card dt {
+  font-weight: bold;
+}
+
+.film-card dd {
+  margin: 0;
+}
+
+.nessun-risultato {
+  padding: 24px;
+  text-align: center;
+  background: white;
+  border-radius: 8px;
+}
+
+.wrap {
+  width: min(900px, calc(100% - 32px));
+  margin: 32px auto;
+  display: grid;
+  gap: 16px;
+}
+
+.brand {
+  width: fit-content;
+  color: #8b1e1e;
+  font-size: 24px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.back {
+  width: fit-content;
+  color: #555;
+  text-decoration: none;
+}
+
+.back:hover {
+  color: #8b1e1e;
+}
+
+.film {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  padding: 32px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.poster,
+.placeholder {
+  width: 100%;
+  min-height: 380px;
+  border-radius: 8px;
+}
+
+.poster {
+  height: 100%;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  color: #777;
+  text-align: center;
+  background: linear-gradient(145deg, #e8eaed, #d9dde2);
+}
+
+.label {
+  color: #8b1e1e;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.film h1 {
+  margin: 8px 0 16px;
+  color: #202020;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.05;
+}
+
+.facts {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.fact {
+  padding: 7px 10px;
+  color: #8b1e1e;
+  font-size: 14px;
+  font-weight: bold;
+  background: #f4eaea;
+  border-radius: 999px;
+}
+
+.film h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.description {
+  margin: 0 0 24px;
+  color: #555;
+  line-height: 1.7;
+}
+
+.credits {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid #e6e6e6;
+}
+
+.credits div {
+  display: grid;
+  gap: 4px;
+  color: #333;
+}
+
+.credit-label {
+  color: #777;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.missing {
+  padding: 48px 24px;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.missing h1 {
+  color: #8b1e1e;
+}
+
+@media (max-width: 700px) {
+  .film {
+    grid-template-columns: 1fr;
+  }
+
+  .poster,
+  .placeholder {
+    min-height: 260px;
+  }
+
+  .credits {
+    grid-template-columns: 1fr;
+  }
+}

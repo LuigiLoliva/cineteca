@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title><%= typeof film !== 'undefined' && film ? (film.titolo || film.title || film.nome || 'Dettagli film') : 'Film non trovato' %> | Cineteca</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<main class="wrap">
+		<a class="brand" href="/">Cineteca</a><br>
+		<a class="back" href="/catalogo">← Torna al catalogo</a>
+
+		<% if (typeof film !== 'undefined' && film) { %>
+			<article class="film">
+				<div>
+					<% if (film.locandina || film.poster || film.immagine) { %>
+						<img class="poster" src="<%= film.locandina || film.poster || film.immagine %>" alt="Locandina di <%= film.titolo || film.title || film.nome || 'film' %>">
+					<% } else { %>
+						<div class="placeholder">Locandina non disponibile</div>
+					<% } %>
+				</div>
+				<div>
+					<div class="label">Dettagli del film</div>
+					<h1><%= film.titolo || film.title || film.nome || 'Titolo non disponibile' %></h1>
+					<div class="facts">
+						<% if (film.anno || film.year) { %><span class="fact"><%= film.anno || film.year %></span><% } %>
+						<% if (film.genere || film.genre) { %><span class="fact"><%= film.genere || film.genre %></span><% } %>
+						<% if (film.durata || film.runtime) { %><span class="fact"><%= film.durata || film.runtime %><%= typeof (film.durata || film.runtime) === 'number' ? ' min' : '' %></span><% } %>
+						<% if (film.valutazione || film.rating) { %><span class="fact">★ <%= film.valutazione || film.rating %></span><% } %>
+					</div>
+					<h2>Trama</h2>
+					<p class="description"><%= film.trama || film.descrizione || film.description || 'La trama non è ancora disponibile.' %></p>
+					<div class="credits">
+						<% if (film.regista || film.director) { %><div><span class="credit-label">Regia</span><%= film.regista || film.director %></div><% } %>
+						<% if (film.cast || film.attori) { %><div><span class="credit-label">Cast</span><%= film.cast || film.attori %></div><% } %>
+						<% if (film.paese || film.nazionalita || film.country) { %><div><span class="credit-label">Paese</span><%= film.paese || film.nazionalita || film.country %></div><% } %>
+					</div>
+				</div>
+			</article>
+		<% } else { %>
+			<section class="missing"><h1>Film non trovato</h1><p>Il film richiesto non è disponibile.</p></section>
+		<% } %>
+	</main>
+</body>
+</html>

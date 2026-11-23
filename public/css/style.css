@@ -111,6 +111,49 @@ body {
   cursor: pointer;
 }
 
+.form-film {
+  display: grid;
+  gap: 16px;
+  max-width: 640px;
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.campo-form {
+  display: grid;
+  gap: 6px;
+}
+
+.campo-form label {
+  font-weight: bold;
+}
+
+.campo-form input,
+.campo-form textarea {
+  width: 100%;
+  padding: 10px;
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.campo-form textarea {
+  resize: vertical;
+}
+
+.form-film button {
+  width: fit-content;
+  padding: 11px 16px;
+  color: white;
+  font: inherit;
+  background: #8b1e1e;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .catalogo {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

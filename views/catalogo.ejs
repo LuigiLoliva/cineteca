@@ -16,19 +16,30 @@
 
     <header class="page-header">
       <h1>Catalogo dei film</h1>
-      <p><%= film.length %> <%= film.length === 1 ? 'film presente' : 'film presenti' %> nell'archivio.</p>
+      <% if (titoloRicerca) { %>
+        <p><%= film.length %> <%= film.length === 1 ? 'risultato' : 'risultati' %> per "<%= titoloRicerca %>".</p>
+      <% } else { %>
+        <p><%= film.length %> <%= film.length === 1 ? 'film presente' : 'film presenti' %> nell'archivio.</p>
+      <% } %>
     </header>
 
-    <form class="ricerca" action="/catalogo/cerca" method="get">
+    <form class="ricerca" action="/catalogo" method="get">
       <label for="titolo">Cerca per titolo</label>
       <div>
-        <input type="search" id="titolo" name="titolo" placeholder="Inserisci un titolo">
+        <input type="search" id="titolo" name="titolo" placeholder="Inserisci un titolo" value="<%= titoloRicerca %>">
         <button type="submit">Cerca</button>
       </div>
+      <% if (titoloRicerca) { %>
+        <a href="/catalogo">Mostra tutto il catalogo</a>
+      <% } %>
     </form>
 
     <% if (film.length === 0) { %>
-      <p class="nessun-risultato">Nessun film presente nel catalogo.</p>
+      <% if (titoloRicerca) { %>
+        <p class="nessun-risultato">Nessun film trovato per "<%= titoloRicerca %>".</p>
+      <% } else { %>
+        <p class="nessun-risultato">Nessun film presente nel catalogo.</p>
+      <% } %>
     <% } else { %>
       <section class="catalogo" aria-label="Elenco dei film">
         <% film.forEach(opera => { %>

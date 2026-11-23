@@ -46,9 +46,17 @@ app.get('/catalogo', (req, res) => {
       return res.status(500).send('Archivio dei film non valido.');
     }
 
+    const titoloRicerca = typeof req.query.titolo === 'string'
+      ? req.query.titolo.trim()
+      : '';
+    const filmTrovati = titoloRicerca
+      ? film.filter(opera => opera.titolo.toLocaleLowerCase().includes(titoloRicerca.toLocaleLowerCase()))
+      : film;
+
     res.render('catalogo', {
       titoloPagina: 'Catalogo Film',
-      film: film
+      film: filmTrovati,
+      titoloRicerca
     });
   });
 });
@@ -84,6 +92,47 @@ app.get('/film/:id', (req, res) => {
             film: opera,
             opera: opera
         });
+    });
+});
+
+app.get('/aggiungi', (req, res) => {
+  res.render('aggiungi', {
+    titoloPagina: 'Aggiungi Film'
+  });
+});
+
+app.post('/aggiungi', express.urlencoded({ extended: true }), (req, res) => {
+    const percorsoArchivio = path.join(__dirname, 'data', 'film.json');
+    fs.readFile(percorsoArchivio, 'utf8', (errore, dati) => {
+      if (errore) {
+        console.error('Errore durante la lettura dell\'archivio:', errore);
+        return res.status(500).send('Impossibile leggere l\'archivio dei film.');
+      }
+
+      let film;
+      try {
+        film = JSON.parse(dati);
+      } catch (erroreJSON) {
+        console.error('Errore durante l\'analisi dell\'archivio:', erroreJSON);
+        return res.status(500).send('Archivio dei film non valido.');
+      }
+
+      const nuovoFilm = {
+        id: film.reduce((idMassimo, opera) => Math.max(idMassimo, Number(opera.id) || 0), 0) + 1,
+        titolo: req.body.titolo,
+        regista: req.body.regista,
+        anno: parseInt(req.body.anno),
+        genere: req.body.genere,
+        trama: req.body.trama
+      };
+
+      fs.writeFile(percorsoArchivio, JSON.stringify([...film, nuovoFilm], null, 2), (erroreScrittura) => {
+        if (erroreScrittura) {
+          console.error('Errore durante l\'aggiunta del film:', erroreScrittura);
+          return res.status(500).send('Impossibile aggiungere il film.');
+        }
+        res.redirect('/catalogo');
+      });
     });
 });
 

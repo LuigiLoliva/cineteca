@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b10">
   <title><%= titoloPagina %></title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <main class="page">
-    <nav class="navigazione" aria-label="Navigazione principale">
-      <a href="/">Home</a>
-      <a href="/catalogo">Catalogo</a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a class="brand" href="/" aria-label="Cineteca, home"><span class="brand-mark">C</span> Cineteca</a>
+      <div class="site-nav-links">
+        <a href="/catalogo">Il catalogo</a>
+        <a class="nav-cta active" href="/aggiungi">Aggiungi un film <span aria-hidden="true">↗</span></a>
+      </div>
     </nav>
 
     <header class="page-header">
-      <h1>Aggiungi un film</h1>
-      <p>Inserisci i dettagli del film da aggiungere al catalogo.</p>
+      <p class="eyebrow"><span></span> Allarga la collezione</p>
+      <h1>Ogni grande storia<br>merita un <em>posto.</em></h1>
+      <p>Aggiungi i dettagli del film e fallo entrare nella cineteca.</p>
     </header>
 
     <form class="form-film" action="/aggiungi" method="post">
@@ -44,7 +49,7 @@
         <textarea id="trama" name="trama" rows="5" required></textarea>
       </div>
 
-      <button type="submit">Aggiungi film</button>
+      <button class="button button-primary" type="submit">Aggiungi film <span aria-hidden="true">→</span></button>
     </form>
   </main>
 </body>

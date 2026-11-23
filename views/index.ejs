@@ -3,28 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b10">
   <title><%= titoloPagina %></title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <main class="home">
-    <header>
-      <h1>Cineteca</h1>
-      <p>
-        Il tuo archivio cinematografico digitale: consulta il catalogo,
-        cerca un film per titolo o aggiungi una nuova opera.
-      </p>
-    </header>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a class="brand" href="/" aria-label="Cineteca, home"><span class="brand-mark">C</span> Cineteca</a>
+      <div class="site-nav-links">
+        <a href="/catalogo">Il catalogo</a>
+        <a class="nav-cta" href="/aggiungi">Aggiungi un film <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
 
-    <section class="contatore" aria-label="Numero di film presenti">
-      <strong><%= numeroFilm %></strong>
-      <span><%= numeroFilm === 1 ? 'film presente' : 'film presenti' %></span>
+    <section class="hero" aria-labelledby="titolo-home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Il grande cinema, tutto in un posto</p>
+        <h1 id="titolo-home">La tua prossima<br><em>storia</em> inizia qui.</h1>
+        <p class="hero-description">
+          Esplora la cineteca, riscopri i tuoi film preferiti
+          e aggiungi nuove storie alla collezione.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/catalogo">Esplora i film <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="/aggiungi">Aggiungi un film <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-orbit"></div>
+        <div class="hero-frame">
+          <span class="hero-frame-top">CINETECA <span>NO. 001</span></span>
+          <div class="hero-light"></div>
+          <div class="hero-frame-title">DOVE<br>NASCONO<br><em>LE STORIE</em></div>
+          <span class="hero-frame-bottom">UNA COLLEZIONE IN CONTINUA EVOLUZIONE</span>
+        </div>
+        <span class="hero-index">01 <span>/</span> <%= String(numeroFilm).padStart(2, '0') %></span>
+      </div>
     </section>
 
-    <nav class="azioni" aria-label="Funzionalità principali">
-      <a href="/catalogo">Consulta il catalogo</a>
-      <a href="/aggiungi">Aggiungi un film</a>
-    </nav>
+    <section class="home-footer" aria-label="La cineteca">
+      <div class="home-stat">
+        <strong><%= numeroFilm %></strong>
+        <span>film in archivio</span>
+      </div>
+      <p>Un archivio fatto per chi ama il cinema.</p>
+      <a href="/catalogo">Scopri la collezione <span aria-hidden="true">↗</span></a>
+    </section>
   </main>
 </body>
 </html>

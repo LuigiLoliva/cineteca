@@ -3,12 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#090b10">
 	<title><%= typeof film !== 'undefined' && film ? (film.titolo || film.title || film.nome || 'Dettagli film') : 'Film non trovato' %> | Cineteca</title>
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 	<main class="wrap">
-		<a class="brand" href="/">Cineteca</a><br>
+		<nav class="site-nav" aria-label="Navigazione principale">
+			<a class="brand" href="/" aria-label="Cineteca, home"><span class="brand-mark">C</span> Cineteca</a>
+			<div class="site-nav-links">
+				<a class="active" href="/catalogo">Il catalogo</a>
+				<a class="nav-cta" href="/aggiungi">Aggiungi un film <span aria-hidden="true">↗</span></a>
+			</div>
+		</nav>
 		<a class="back" href="/catalogo">← Torna al catalogo</a>
 
 		<% if (typeof film !== 'undefined' && film) { %>

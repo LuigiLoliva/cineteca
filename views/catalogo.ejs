@@ -3,66 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b10">
   <title><%= titoloPagina %></title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <main class="page">
-    <nav class="navigazione" aria-label="Navigazione principale">
-      <a href="/">Home</a>
-      <a href="/catalogo">Catalogo</a>
-      <a href="/aggiungi">Aggiungi film</a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a class="brand" href="/" aria-label="Cineteca, home"><span class="brand-mark">C</span> Cineteca</a>
+      <div class="site-nav-links">
+        <a class="active" href="/catalogo">Il catalogo</a>
+        <a class="nav-cta" href="/aggiungi">Aggiungi un film <span aria-hidden="true">↗</span></a>
+      </div>
     </nav>
 
     <header class="page-header">
-      <h1>Catalogo dei film</h1>
+      <p class="eyebrow"><span></span> La collezione</p>
+      <h1>Storie da <em>riscoprire.</em></h1>
       <% if (titoloRicerca) { %>
-        <p><%= film.length %> <%= film.length === 1 ? 'risultato' : 'risultati' %> per "<%= titoloRicerca %>".</p>
+        <p><%= film.length %> <%= film.length === 1 ? 'risultato' : 'risultati' %> per “<%= titoloRicerca %>”.</p>
       <% } else { %>
-        <p><%= film.length %> <%= film.length === 1 ? 'film presente' : 'film presenti' %> nell'archivio.</p>
+        <p>Una selezione di <%= film.length %> <%= film.length === 1 ? 'film' : 'film' %> da vivere, ricordare e condividere.</p>
       <% } %>
     </header>
 
     <form class="ricerca" action="/catalogo" method="get">
-      <label for="titolo">Cerca per titolo</label>
       <div>
-        <input type="search" id="titolo" name="titolo" placeholder="Inserisci un titolo" value="<%= titoloRicerca %>">
-        <button type="submit">Cerca</button>
+        <label class="sr-only" for="titolo">Cerca un film per titolo</label>
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input type="search" id="titolo" name="titolo" placeholder="Cerca un film..." value="<%= titoloRicerca %>">
+        <button class="button button-primary" type="submit">Cerca <span aria-hidden="true">→</span></button>
       </div>
       <% if (titoloRicerca) { %>
-        <a href="/catalogo">Mostra tutto il catalogo</a>
+        <a class="reset-search" href="/catalogo">Mostra tutta la collezione <span aria-hidden="true">↗</span></a>
       <% } %>
     </form>
 
+    <div class="collection-heading">
+      <h2><%= titoloRicerca ? 'Risultati della ricerca' : 'In evidenza' %></h2>
+      <span><%= film.length %> titoli</span>
+    </div>
+
     <% if (film.length === 0) { %>
       <% if (titoloRicerca) { %>
-        <p class="nessun-risultato">Nessun film trovato per "<%= titoloRicerca %>".</p>
+        <p class="nessun-risultato">Nessun film trovato per “<%= titoloRicerca %>”. Prova con un altro titolo.</p>
       <% } else { %>
-        <p class="nessun-risultato">Nessun film presente nel catalogo.</p>
+        <p class="nessun-risultato">La collezione è vuota per ora. Aggiungi il primo film.</p>
       <% } %>
     <% } else { %>
       <section class="catalogo" aria-label="Elenco dei film">
         <% film.forEach(opera => { %>
           <article class="film-card">
-            <h2><a href="/film/<%= opera.id %>"><%= opera.titolo %></a></h2>
-            <dl>
+            <a class="film-poster film-poster-<%= (Number(opera.id) - 1) % 6 %>" href="/film/<%= opera.id %>" aria-label="Apri i dettagli di <%= opera.titolo %>">
+              <span class="poster-number"><%= String(opera.anno || 'FILM').slice(0, 4) %></span>
+              <span class="poster-copy">
+                <span class="poster-genre"><%= opera.genere %></span>
+                <span class="poster-title"><%= opera.titolo %></span>
+                <span class="poster-director">UN FILM DI <%= opera.regista %></span>
+              </span>
+              <span class="poster-open" aria-hidden="true">↗</span>
+            </a>
+            <div class="film-card-info">
               <div>
-                <dt>Regista</dt>
-                <dd><%= opera.regista %></dd>
+                <h3><a href="/film/<%= opera.id %>"><%= opera.titolo %></a></h3>
+                <p><%= opera.regista %></p>
               </div>
-              <div>
-                <dt>Anno</dt>
-                <dd><%= opera.anno %></dd>
-              </div>
-              <div>
-                <dt>Genere</dt>
-                <dd><%= opera.genere %></dd>
-              </div>
-              <div>
-                <dt>Durata</dt>
-                <dd><%= opera.durata %> minuti</dd>
-              </div>
-            </dl>
+              <span class="film-year"><%= opera.anno %></span>
+            </div>
           </article>
         <% }); %>
       </section>
